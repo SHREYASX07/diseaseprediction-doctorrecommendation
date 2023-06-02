@@ -25,7 +25,7 @@
 <script type="text/javascript">
 function validate_form() {
   var symptom_name = document.getElementById("symptom_name").value;
-  var validchar = /^[A-Za-z\s]+$/;
+  const validchar = /^[A-Za-z\s]*([\[\]"':-][A-Za-z\s]*)*$/;
 
   if (symptom_name.trim() === '') {
     alert("Please enter a symptom name.");
@@ -33,18 +33,15 @@ function validate_form() {
   } else if (/\d/.test(symptom_name)) {
     alert("Symptom name should not contain any numbers.");
     return false;
-  }else if (!validchar.test(symptom_name)) {
-    alert("Symptom name should only contain alphabets and spaces.");
+  } else if (!validchar.test(symptom_name)) {
+    alert("Symptom name should only contain alphabets, spaces, and allowed special characters when used with text (brackets, hyphens, double quotes, colons).");
     return false;
   } else if (/([A-Za-z])\1{2,}/.test(symptom_name)) {
     alert("Symptom name should not have a repeating character more than 2 times.");
     return false;
-  } else if (/^[A-Za-z\s]*$/.test(symptom_name) !== true) {
-    alert("Symptom name should not have a mix of special characters and alphabets.");
-    return false;
   }
 }
-
+                                                                                   
 </script>
       
 <?php

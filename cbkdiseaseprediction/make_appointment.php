@@ -37,15 +37,21 @@
             alert("Please Enter Date.");
             return false;  
         }
-        else if(name=='')
-        {
-            alert("Please Enter Name.");
-            return false;    
-        }
-        else if(!validchar.test(name))
-        {
-            alert("Name should not be numeric.");
-            return false;
+        if (name.trim() === '') {
+          alert("Please enter a name.");
+          return false;
+        } else if (/\d/.test(name)) {
+          alert("Name should not contain any numeric digits.");
+          return false;
+        } else if (!/^[A-Za-z\s]+$/.test(name)) {
+          alert("Name should only contain alphabets and spaces.");
+          return false;
+        } else if (/([A-Za-z])\1{2,}/.test(name)) {
+          alert("Name should not have a repeating single character more than 2 times.");
+          return false;
+        } else if (/[\[\]"':-]/.test(name)) {
+          alert("Name should not contain any special characters.");
+          return false;
         }
         else if(phone=='')
         {
@@ -62,15 +68,17 @@
             alert("Please Enter a Valid Phone Number");
     		return false;
         }
-        else if(email=='')
-        {
-            alert("Please Enter Email Address.");
-            return false;
-        }
-        else if(validateEmail(email))
-        {
-            alert("Please Enter Valid Email Address.");
-            return false;   
+        var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+        if (email.trim() === '') {
+          alert("Please enter an email address.");
+          return false;
+        } else if (!emailRegex.test(email)) {
+          alert("Please enter a valid email address.");
+          return false;
+        } else if (/(.)\1+@/.test(email) || /@(.+)\1+/.test(email)) {
+          alert("Email address should not have repeating characters before or after the @ symbol.");
+          return false;
         }
     }
     

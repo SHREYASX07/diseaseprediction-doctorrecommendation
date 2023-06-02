@@ -76,7 +76,7 @@ if($_SESSION['admin_userid']!='')
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h1>Login</h1>
+                <h1>Admin Login</h1>
               </div>
             </div>
           </div>

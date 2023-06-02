@@ -72,7 +72,7 @@ $helper = new HealthHelper();
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h1>Login</h1>
+                <h1>Doctor Login</h1>
               </div>
             </div>
           </div>

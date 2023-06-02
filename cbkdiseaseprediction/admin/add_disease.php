@@ -26,7 +26,7 @@
 function validate_form() {
   var disease_name = document.getElementById("disease_name").value;
   var cause = document.getElementById("cause").value;
-  var validchar = /^[A-Za-z\s]+$/;
+  const validchar = /^[A-Za-z\s]*([\[\]"':-][A-Za-z\s]*)*$/;
 
   if (disease_name.trim() === '') {
     alert("Please enter a disease name.");
@@ -35,15 +35,12 @@ function validate_form() {
     alert("Disease name should not contain any numbers.");
     return false;
   } else if (!validchar.test(disease_name)) {
-    alert("Disease name should only contain alphabets and spaces.");
+    alert("Disease name should only contain alphabets, spaces, and allowed special characters when used with text (brackets, hyphens, double quotes, colons).");
     return false;
   } else if (/([A-Za-z])\1{2,}/.test(disease_name)) {
     alert("Disease name should not have a repeating character more than 2 times.");
     return false;
-  } else if (/^[A-Za-z\s]*$/.test(disease_name) !== true) {
-    alert("Disease name should not have a mix of special characters and alphabets.");
-    return false;
-  } 
+  }
 
   if (cause.trim() === '') {
     alert("Please enter a cause.");
@@ -52,15 +49,12 @@ function validate_form() {
     alert("Cause should not contain any numbers.");
     return false;
   } else if (!validchar.test(cause)) {
-    alert("Cause should only contain alphabets and spaces.");
+    alert("Cause should only contain alphabets, spaces, and allowed special characters when used with text (brackets, hyphens, double quotes, colons).");
     return false;
   } else if (/([A-Za-z])\1{2,}/.test(cause)) {
     alert("Cause should not have a repeating character more than 2 times.");
     return false;
-  } else if (/^[A-Za-z\s]*$/.test(cause) !== true) {
-    alert("Cause should not have a mix of special characters and alphabets.");
-    return false;
-  } 
+  }
 }
 
 </script>
