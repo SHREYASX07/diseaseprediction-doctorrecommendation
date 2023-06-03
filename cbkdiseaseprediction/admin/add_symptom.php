@@ -28,18 +28,27 @@ function validate_form() {
   const validchar = /^[A-Za-z\s]*([\[\]"':-][A-Za-z\s]*)*$/;
 
   if (symptom_name.trim() === '') {
-    alert("Please enter a symptom name.");
-    return false;
-  } else if (/\d/.test(symptom_name)) {
-    alert("Symptom name should not contain any numbers.");
-    return false;
-  } else if (!validchar.test(symptom_name)) {
-    alert("Symptom name should only contain alphabets, spaces, and allowed special characters when used with text (brackets, hyphens, double quotes, colons).");
-    return false;
-  } else if (/([A-Za-z])\1{2,}/.test(symptom_name)) {
-    alert("Symptom name should not have a repeating character more than 2 times.");
-    return false;
+  alert("Please enter a symptom name.");
+  return false;
+} else if (!/\d/.test(symptom_name) && !/[A-Za-z]/.test(symptom_name)) {
+  alert("Symptom name should also contain an alphabets or letters.");
+  return false;
+} else if (/([A-Za-z])\1{2,}/.test(symptom_name)) {
+  alert("Symptom name should not have a repeating alphabets or letters more than 2 times.");
+  return false;
+} else if (!/[^A-Za-z\s]/.test(symptom_name)) {
+  symptom_name = '';
+} else if (/\d/.test(symptom_name)) {
+  alert("Symptom name should not contain any numbers.");
+  return false;
+} else {
+  if (/[A-Za-z]/.test(symptom_name)) {
+    symptom_name = symptom_name.replace(/([A-Za-z]+)/g, '[$1]');
+    symptom_name = symptom_name.replace(/([A-Za-z]+)/g, '-$1-');
+    symptom_name = symptom_name.replace(/([A-Za-z]+)/g, '"$1"');
+    symptom_name = symptom_name.replace(/([A-Za-z]+)/g, ':$1:');
   }
+}
 }
                                                                                    
 </script>
