@@ -211,13 +211,12 @@
             alert("Password cannot be empty.");
             return false;
         }
-        var criteriaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$/;
+        var criteriaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         if (!criteriaRegex.test(password)) {
-            alert("Password should contain at least 8 and at most 16 characters, including at least one uppercase letter, one lowercase letter, and one digit.");
+            alert("Password should contain at least 8 characters, including at least one uppercase letter, one lowercase letter, and one digit.");
             return false;
         }
 }
-    
     function validateEmail(email)
     {
         var atpos  = email.indexOf("@");   // The indexOf() method returns the position of the first occurrence of a specified value in a string. // Default value of start is 0  

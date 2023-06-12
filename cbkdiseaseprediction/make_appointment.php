@@ -212,7 +212,7 @@ if($_POST)
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h1>Make Appointment</h1>
+                <h1>Book Appointment</h1>
               </div>
             </div>
           </div>
@@ -221,15 +221,15 @@ if($_POST)
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h2><strong>Make Appointment</strong></h2>
+            <h2><strong>Book Appointment</strong></h2>
             <hr/>
             <p><?php echo $msg;?></p>
             <form method="post" action="" onsubmit="return validate_form();" enctype="multipart/form-data">
                  <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                        <label>Date</label>  
-                        <input type="date" id="date" name="date"  class="form-control input-md" placeholder="Date"/>
+                        <label>Date (MM/DD/YYYY)</label>  
+                        <input type="date" id="date" name="date"  class="form-control input-md" placeholder="Date" min="<?php echo date('Y-m-d');?>" max="2045-12-31"/>
                         </div>
                     </div>
                     <div class="col-md-4">

@@ -85,7 +85,7 @@ if($_SESSION['admin_userid']!='')
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <h2><strong>Login</strong></h2>
+            <h2><strong>Admin Login</strong></h2>
             <hr/>
             <?php
             if($_GET['error'])
