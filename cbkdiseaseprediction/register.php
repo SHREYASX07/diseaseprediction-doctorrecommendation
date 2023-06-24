@@ -99,6 +99,7 @@
             alert("Please Enter Valid Email Address.");
             return false;   
         }
+        //Hospital City
         else if(hospital_city=='')
         {
             alert("Please Select City.");
