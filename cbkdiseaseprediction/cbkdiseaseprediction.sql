@@ -184,7 +184,6 @@ CREATE TABLE `symptoms` (
 --
 
 INSERT INTO `symptoms` (`id`, `symptom_name`) VALUES
--- Brain 
 (1, 'very severe headache.'),
 (2, 'Eye problems,(As blurry vision)'),
 (3, 'Trouble with balance.'),
@@ -196,7 +195,7 @@ INSERT INTO `symptoms` (`id`, `symptom_name`) VALUES
 (9, 'difficulty swallowing (dysphagia)'),
 (10, 'a sudden and very severe headache'),
 (11, 'loss of consciousness'),
---Kidney
+
 (12, 'Abnormal urine color.'),
 (13, 'Blood in the urine'),
 (14, 'Fever'),
@@ -208,7 +207,7 @@ INSERT INTO `symptoms` (`id`, `symptom_name`) VALUES
 (20, 'An increased need to pee (particularly at night).'),
 (21, 'feeling sick'),
 (22, 'Trouble breathing'),
---Lungs
+
 (23, 'Not wanting to eat.'),
 (24, 'Chest pain.'),
 (25, 'Coughing up blood or mucus.'),
@@ -222,7 +221,7 @@ INSERT INTO `symptoms` (`id`, `symptom_name`) VALUES
 (33, 'Wheezing.'),
 (34, 'Coughing up blood.'),
 (35, 'Weight loss with no known cause.'),
---Pancreas
+
 (36, 'Abdominal Pain'),
 (37, 'Jaundic'),
 (38, 'Digestive Problems'),
