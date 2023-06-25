@@ -184,6 +184,7 @@ CREATE TABLE `symptoms` (
 --
 
 INSERT INTO `symptoms` (`id`, `symptom_name`) VALUES
+
 (1, 'very severe headache.'),
 (2, 'Eye problems,(As blurry vision)'),
 (3, 'Trouble with balance.'),
