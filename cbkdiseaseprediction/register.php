@@ -45,18 +45,18 @@
         }
         var repeatingCharsRegex = /([a-zA-Z])\1{2}/;
         if (repeatingCharsRegex.test(hospital_name)) {
-            alert("Hospital name should not have repeating alphabets more than 2 times.");
-            return false;
+        alert("Hospital name should not have repeating alphabets more than 2 times.");
+        return false;
         }
         var numberRegex = /\d/;
         if (numberRegex.test(hospital_name)) {
-            alert("Hospital name should not contain numbers.");
-            return false;
+        alert("Hospital name should not contain numbers.");
+        return false;
         }
-        var specialCharsRegex = /[^a-zA-Z\s]/;
+        var specialCharsRegex = /[^a-zA-Z\s.]|[^\w\s]\./;
         if (specialCharsRegex.test(hospital_name)) {
-            alert("Hospital name should not contain special characters or mixed characters.");
-            return false;
+        alert("Hospital name should not contain special characters or mixed characters.");
+        return false;
         }
         //Hospital Phone Number
         else if(hospital_phone=='')
@@ -100,10 +100,29 @@
             return false;   
         }
         //Hospital City
-        else if(hospital_city=='')
-        {
-            alert("Please Select City.");
-            return false;   
+        if (hospital_city.trim() === "") {
+            alert("Name of hospital city shouldn't be left blank.");
+            return false; 
+        }
+        var numericRegex = /[0-9]/;
+        if (numericRegex.test(hospital_city)) {
+            alert("Hospital city should not contain numeric digits.");
+            return false; 
+        }
+        var specialCharsRegex = /[^a-zA-Z,\s]/;
+        if (specialCharsRegex.test(hospital_city)) {
+            alert("Hospital city should not have such characters .");
+            return false; 
+        }
+        var repeatingCharsRegex = /([a-zA-Z])\1/;
+        if (repeatingCharsRegex.test(hospital_city)) {
+            alert("Hospital city should not have repeating alphabets.");
+            return false; 
+        }
+        var commaValidationRegex = /[^a-zA-Z](,[^a-zA-Z]|$)/;
+        if (commaValidationRegex.test(hospital_city)) {
+            alert("Comma should only be used with alphabets.");
+            return false; 
         }
         //Hospital Address
         if (hospital_address.trim() === "") {
@@ -163,23 +182,34 @@
         }
         //Doctor Qualification
         if (doctor_qualification.trim() === "") {
-            alert("Doctor qualification cannot be empty.");
-            return false;
+        alert("Doctor qualification cannot be empty.");
+        return false;
         }
         var numericRegex = /[0-9]/;
         if (numericRegex.test(doctor_qualification)) {
-            alert("Doctor qualification should not contain numeric characters.");
-            return false;
+        alert("Doctor qualification should not contain numeric characters.");
+        return false;
         }
-        var specialCharsRegex = /[^a-zA-Z\s]/;
+        var specialCharsRegex = /[^a-zA-Z\s()]/;
         if (specialCharsRegex.test(doctor_qualification)) {
-            alert("Doctor qualification should only contain alphabets and spaces.");
-            return false;
+        alert("Doctor qualification should only contain alphabets, spaces, and parentheses.");
+        return false;
         }
         var repeatingCharsRegex = /([a-zA-Z])\1{2}/;
         if (repeatingCharsRegex.test(doctor_qualification)) {
-            alert("Doctor qualification should not repeat the alphabets more than 2 times.");
-            return false;
+        alert("Doctor qualification should not repeat the alphabets more than 2 times.");
+        return false;
+        } 
+        var bracketRegex = /[()]/;
+        var alphabetsRegex = /[a-zA-Z]/;
+        if (bracketRegex.test(doctor_qualification) && !alphabetsRegex.test(doctor_qualification)) {
+        alert("Brackets should only be used with alphabets in the doctor qualification.");
+        return false;
+        }
+        var repeatingCharsRegex = /([a-zA-Z])\1{2}/;
+        if (repeatingCharsRegex.test(doctor_qualification)) {
+        alert("Doctor qualification should not repeat the alphabets more than 2 times.");
+        return false;
         }
         //Doctor Speciality
         else if(doctor_speciality=='')
@@ -218,6 +248,7 @@
             return false;
         }
 }
+    
     function validateEmail(email)
     {
         var atpos  = email.indexOf("@");   // The indexOf() method returns the position of the first occurrence of a specified value in a string. // Default value of start is 0  
@@ -360,71 +391,57 @@ if($_POST)
             <hr/>
             <p><?php echo $msg;?></p>
             <form method="post" action="" onsubmit="return validate_form();" enctype="multipart/form-data">
-                 <div class="row">
+                <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                        <label>Hospital Name</label>  
-                        <input type="text" id="hospital_name" name="hospital_name"  class="form-control input-md" placeholder="Hospital Name"/>
+                            <label>Hospital Name</label>
+                            <input type="text" id="hospital_name" name="hospital_name" class="form-control input-md" placeholder="Hospital Name"/>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Hospital Phone</label>
-                            <input type="text" id="hospital_phone" name="hospital_phone"  class="form-control input-md" maxlength="10" placeholder="Hospital Phone"/>
+                            <input type="text" id="hospital_phone" name="hospital_phone" class="form-control input-md" maxlength="10" placeholder="Hospital Phone"/>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Hospital Email</label>
-                            <input type="text" id="hospital_email" name="hospital_email"  class="form-control input-md" placeholder="Hospital Email"/>
+                            <input type="text" id="hospital_email" name="hospital_email" class="form-control input-md" placeholder="Hospital Email"/>
                         </div>
                     </div>
                 </div>
-                
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                        <label>Hospital City</label>  
-                        <select id="hospital_city" name="hospital_city"  class="form-control input-md">
-                            <option value="">Select City</option>
-                            <option value="1">Chikodi</option>
-                            <option value="2">Nipani</option>
-                            <option value="3">Kolhapur</option>
-                            <option value="4">Belgaum</option>
-                            <option value="5">Miraj</option>
-                            <option value="6">Sangli</option>
-                            <option value="7">Dharwad</option>
-                            <option value="8">Pune</option>
-                            <option value="9">Mumbai</option>
-                            <option value="10">Bangalore</option>
-                        </select>
+                            <label>Hospital City</label>
+                            <input type="text" id="hospital_city" name="hospital_city" class="form-control input-md" placeholder="Enter City"/>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Hospital Address</label>
-                            <input type="text" id="hospital_address" name="hospital_address"  class="form-control input-md" placeholder="Hospital Address"/>
+                            <input type="text" id="hospital_address" name="hospital_address" class="form-control input-md" placeholder="Hospital Address"/>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Doctor Name</label>
-                            <input type="text" id="doctor_name" name="doctor_name"  class="form-control input-md" placeholder="Doctor Name"/>
+                            <input type="text" id="doctor_name" name="doctor_name" class="form-control input-md" placeholder="Doctor Name"/>
                         </div>
                     </div>
                 </div>
-                
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Doctor Phone</label>
-                            <input type="text" id="doctor_phone" name="doctor_phone"  class="form-control input-md" maxlength="10" placeholder="Doctor Phone"/>
+                            <input type="text" id="doctor_phone" name="doctor_phone" class="form-control input-md" maxlength="10" placeholder="Doctor Phone"/>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Doctor Qualification</label>
-                            <input type="text" id="doctor_qualification" name="doctor_qualification"  class="form-control input-md" placeholder="Doctor Qualification"/>
+                            <input type="text" id="doctor_qualification" name="doctor_qualification" class="form-control input-md" placeholder="Doctor Qualification"/>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -445,8 +462,7 @@ if($_POST)
                         </select>
                         </div>
                     </div>
-                </div>
-                
+                </div>               
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -467,7 +483,6 @@ if($_POST)
                         </div>
                     </div>
                 </div>
-              
                 <div class="row">
                     <div class="form-group">
                         <div class="col-md-12">

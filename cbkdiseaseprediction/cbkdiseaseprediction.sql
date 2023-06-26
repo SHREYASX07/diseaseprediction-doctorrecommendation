@@ -247,7 +247,7 @@ CREATE TABLE `users` (
   `hospital_name` varchar(255) NOT NULL,
   `hospital_phone` varchar(255) NOT NULL,
   `hospital_email` varchar(255) NOT NULL,
-  `hospital_city` int(11) NOT NULL,
+  `hospital_city` varchar(11) NOT NULL,
   `hospital_address` text NOT NULL,
   `doctor_name` varchar(255) NOT NULL,
   `doctor_phone` varchar(255) NOT NULL,

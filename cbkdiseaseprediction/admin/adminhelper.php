@@ -25,7 +25,7 @@ class AdminHelper
         $db=new Database();
         $db->open();
         
-        $sql="SELECT a.*, b.organ_name FROM `users` as a LEFT JOIN `organs` as b ON a.doctor_speciality= b.id ORDER BY id DESC";
+        $sql = "SELECT a.*, b.organ_name FROM `users` as a LEFT JOIN `organs` as b ON a.doctor_speciality = b.id ORDER BY id DESC";
         $result=$db->query($sql);
         
         if($result)
@@ -35,7 +35,9 @@ class AdminHelper
                 <tr>
                     <th>ID</th>
                     <th>Hospital Name</th>
+                    <th>Hospital City</th>
                     <th>Hospital Phone</th>
+                    <th>Hospital Email</th>
                     <th>Hospital Address</th>
                     <th>Doctor Name</th>
                     <th>Doctor Phone</th>
@@ -51,7 +53,9 @@ class AdminHelper
                     <tr>
                         <td><?php echo $row['id'];?></td>
                         <td><?php echo $row['hospital_name'];?></td>
+                        <td><?php echo $row['hospital_city'];?></td>
                         <td><?php echo $row['hospital_phone'];?></td>
+                        <td><?php echo $row['hospital_email'];?></td>
                         <td><?php echo $row['hospital_address'];?></td>
                         <td><?php echo $row['doctor_name'];?></td>
                         <td><?php echo $row['doctor_phone'];?></td>
