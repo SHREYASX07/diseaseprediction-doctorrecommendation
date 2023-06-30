@@ -163,10 +163,10 @@ CREATE TABLE `organs` (
 --
 
 INSERT INTO `organs` (`id`, `organ_name`) VALUES
-(1, 'Brain'),
-(2, 'Kidneys'),
-(3, 'Lungs'),
-(4, 'Pancreas');
+(1, 'Neurologist(Brain)'),
+(2, 'Nephrologist(Kidneys)'),
+(3, 'Pulmonologist(Lungs)'),
+(4, '	Pancreatologists(Pancreas)');
 
 -- --------------------------------------------------------
 

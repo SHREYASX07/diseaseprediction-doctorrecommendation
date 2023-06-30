@@ -33,13 +33,13 @@ function validate_form() {
   } else if (/\d/.test(organ_name)) {
     alert("Organ name should not contain any numbers.");
     return false;
-  }else if (/([A-Za-z])\1{2,}/.test(organ_name)) {
+  } else if (/([A-Za-z])\1{2,}/.test(organ_name)) {
     alert("Organ name should not have a repeating character more than 2 times.");
     return false;
-  } else if (/^[A-Za-z\s]*$/.test(organ_name) !== true) {
-    alert("Organ name should not have a mix of special characters and alphabets.");
+  } else if (!/^([A-Za-z\s]*\([A-Za-z]+\)[A-Za-z\s]*|[A-Za-z\s]+)$/.test(organ_name)) {
+    alert("Organ name should only contain alphabets and properly used parentheses or data without parentheses.");
     return false;
-  } 
+  }
 }
 </script>
 
